@@ -5,8 +5,7 @@ import plotly.graph_objects as go
 
 
 # Cargar los datos de vehículos en Estados Unidos
-car_data = pd.read_csv(
-    'c:\\Users\\danni\\Desktop\\TripleTen\\Sprint 7\\vehicles_us.csv')
+car_data = pd.read_csv('car_data = pd.read_csv('vehicles_us.csv')
 
 # Mostrar el encabezado del análisis
 st.header('Análisis de Vehículos en Estados Unidos')
