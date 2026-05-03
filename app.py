@@ -1,12 +1,10 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
 
 # Cargar los datos de vehículos en Estados Unidos
-car_data = pd.read_csv(
-    'c:\\Users\\danni\\Desktop\\TripleTen\\Sprint 7\\vehicles_us.csv')
+car_data = pd.read_csv('vehicles_us.csv')
 
 # Mostrar el encabezado del análisis
 st.header('Análisis de Vehículos en Estados Unidos')
@@ -32,8 +30,27 @@ if hist_button:
     st.plotly_chart(fig, use_container_width=True)
 
 
-# crear una casilla de verificación
-build_histogram = st.checkbox('Construir un histograma')
+# Crear un botón para construir un gráfico de dispersión
+scatter_button = st.button('Construir gráfico de dispersión')
 
-if build_histogram:  # si la casilla de verificación está seleccionada
-    st.write('Construir un histograma para la columna odómetro')
+# Lógica a ejecutar cuando se hace clic en el botón
+if scatter_button:
+    st.write('Creación de un gráfico de dispersión entre odómetro y precio')
+
+    fig = go.Figure(
+        data=[
+            go.Scatter(
+                x=car_data['odometer'],
+                y=car_data['price'],
+                mode='markers'
+            )
+        ]
+    )
+
+    fig.update_layout(
+        title_text='Relación entre odómetro y precio',
+        xaxis_title='Odómetro',
+        yaxis_title='Precio'
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
